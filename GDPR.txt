@@ -1,0 +1,193 @@
+Intelligent Regulatory Assistant using RAG with Responsible AI for GDPR
+Course-end Project 3
+Description
+
+Problem Statement
+
+Regulatory compliance documents like the GDPR (General Data Protection Regulation) are dense, complex, and often difficult to interpret. Professionals across legal, data privacy, and tech domains require tools to quickly query, understand, and trace answers from such documents while ensuring accuracy, transparency, and robustness.
+
+
+This project aims to develop a Responsible AI-powered RAG system for GDPR that not only retrieves relevant content but does so with memory, guardrails, agentic reasoning, graph-enhanced retrieval, and accountability features.
+
+Objectives
+
+Parse and preprocess the GDPR document into usable chunks.
+Build a baseline RAG (Retrieval-Augmented Generation) system.
+Extend the system with:
+             o Memory
+             o Safety filters (guardrails)
+             o Agentic reasoning (Retriever + Citation Checker + Summarizer)
+             o Graph-based RAG (guided query reformulation and completion)
+             o Responsible AI features (hallucination filters, robustness checks, traceability)
+
+Deliver a transparent and auditable system fit for industrial use.
+Tech Stack
+
+ 
+
+Component
+
+Tool/Library
+
+Programming Language
+
+Python
+
+Core Frameworks
+
+LangChain, LangGraph
+
+Embedding Model
+
+OpenAI Embeddings (text-embedding-3-small or 3-large)
+
+LLM
+
+GPT-3.5 / GPT-4 via OpenAI API
+
+Vector Store
+
+FAISS
+
+Observability
+
+LangSmith
+
+ 
+
+Action Items and Milestones
+
+Phase 1: Data Preparation
+
+Download the official GDPR regulation PDF from:
+https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32016R0679
+
+Convert and upload the document to lab workspace.
+
+Load and parse the document using LangChain Document Loaders.
+
+Perform intelligent splitting using one or more of:
+
+Paragraph-wise
+
+Article-wise
+
+Chapter-wise
+
+Token-based
+
+Generate OpenAI embeddings and save to FAISS vector database.
+
+Persist the database using disk storage.
+
+Phase 2: Baseline Retrieval-Augmented Generation (RAG)
+
+Implement a basic RAG pipeline:
+
+User query → FAISS retrieval → Prompt template → LLM answer
+
+Evaluate coherence and accuracy of responses
+
+Phase 3: Add Memory
+
+Integrate LangGraph memory for chat-style follow-ups.
+
+Maintain conversational context using message history tracking.
+
+Phase 4: Add Guardrails
+
+Apply input/output filters to detect:
+
+Adversarial queries
+
+Toxic, biased, or unsafe generation
+
+Reject or rewrite unsafe prompts/responses.
+
+Phase 5: Agentic RAG
+
+Implement a tool-using agent pipeline via LangGraph:
+
+Tools:
+
+Retriever: retrieves chunks
+
+Citation Checker: verifies source overlap
+
+Summarizer: compresses final output
+
+Agent decides based on tool observation
+
+Phase 6: Graph-RAG with Guided Retrieval
+
+Build a Graph-enhanced RAG pipeline:
+
+Rephrase question from natural language to regulatory language
+
+Retrieve anchor chunk
+
+Validate logical completeness (e.g., legal conditions)
+
+If incomplete, retrieve neighboring chunks
+
+Respond with extracted answer + citation + page number
+
+Optionally return full page content
+
+Phase 7: Responsible AI Integration
+
+Robustness:
+
+Test with adversarial inputs and paraphrased regulatory queries
+
+Safety:
+
+Apply hallucination detection (e.g., retrieve without generation, use scoring tools)
+
+Accountability:
+
+Use LangSmith traces to log:
+
+Inputs/outputs
+
+Retrieval traces
+
+Tool usage
+
+Prompt chains
+
+Expected Deliverables
+
+Deliverable
+
+Description
+
+Notebook
+
+Python notebook showing step-by-step implementation with clear comments
+
+LangSmith Trace Logs
+
+Exports of trace logs for debugging, reproducibility, and demonstration
+
+README File
+
+Explaining architecture, design choices, limitations, and setup instructions
+
+Responsible AI Report
+
+Documentation of adversarial testing, guardrail implementation, and safety practices
+
+Graph Diagram
+
+Visual flow of Graph-RAG agent + query rephraser + citation workflow
+
+ 
+
+Expected Outcomes
+
+Searchable GDPR knowledge base that returns grounded and cited answers
+Graph-enhanced system with improved accuracy and traceability
+Agentic query reasoning with tools like citation checker and summarizer
+Responsible AI coverage: hallucination filters, robustness tests, LangSmith audit
+Reusable architecture for other regulations (e.g., DORA, HIPAA, ISO)
